@@ -1,41 +1,56 @@
-#include <iostream>
-#include <cstring>
+//This code reads in an input from the user, and states if it is a Palindrome or not.
+//Author: Jeffrey Teh
+//Date:9/21/21
+  #include <iostream>
+  #include <cstring>
 
-using namespace std;
-
-int main()
-{
-  char str[80];
-  char input[80];
-  cout << "Please enter a string!" << endl;
-  cin >> input >> endl;
-  int count = 0;
-  for(int i = 0; i<80, i++;)
+  using namespace std;
+//Main Method
+  int main()
+  {
+    //Initializing arrays and reading in input
+    char reverse[80];
+    char input[80];
+    char str[80];
+    cout << "Please enter a string!" << endl;
+    cin.get(input, 80 , '\n');
+    cin.get();
+    int length = strlen(input);
+    int a = 0;
+    //Removing spaces and punctuation
+    //Credit to http://www.cplusplus.com/forum/beginner/141786/
+    for(int i=0; i <strlen((input)); i++){
+     while (input[i] != '\0')
     {
-    if(ispunct(input[i]) == 0)
-      {
-	 remove(begin(str), end(str), input[i]);
-      }
-    if (isalpha(input[i]) || isdigit(input[i]))
-     {
-    str[count] = input[i];
-    count++;
-     }
-      else
+      if (input[i] != ' ' && isalnum(input[i]) != 0)
 	{
-	  cout << "Please enter only numbers or letters." << endl;
+		str[a] = tolower(input[i]);
 	}
+	else
+	a--;
+	i++; a++;
     }
-    //https://www.geeksforgeeks.org/remove-spaces-from-a-given-string/
-  reverse(begin(str), end(str));
-  if(strcmp(str, input) == 0)
-    {
-      cout << "Palindrome" << endl;
+
+  }
+    int length2 = strlen(str);
+    int j = 0;
+    //Reversing the string
+    for (int k = strlen(str) - 1; k >= 0; k--) {
+      reverse[j] = str[k];
+      j++;
     }
-  else
-    {
-      cout << "Not a Palindrome" << endl;  
+    //Removing any extra characters if necessary
+    if(strlen(reverse) > length2){
+      reverse[strlen(reverse)-1] = '\0';
     }
-    input[count] = '\0';
-  return 0;
+    //Checking to see if it's a Palindrome
+         if(strcmp(reverse, str) == 0){
+        
+          cout << "Palindrome" << endl;
+          }
+        else
+          {
+        cout << "Not a Palindrome" << endl;
+          }    
+    return 0;
   }
