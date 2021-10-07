@@ -39,10 +39,7 @@
       reverse[j] = str[k];
       j++;
     }
-    //Removing any extra characters if necessary
-    if(strlen(reverse) > length2){
-      reverse[strlen(reverse)-1] = '\0';
-    }
+	reverse[length2] = '\0';
     //Checking to see if it's a Palindrome
          if(strcmp(reverse, str) == 0){
         
