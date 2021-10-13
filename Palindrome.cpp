@@ -20,8 +20,6 @@
     //Removing spaces and punctuation
     //Credit to http://www.cplusplus.com/forum/beginner/141786/
     for(int i=0; i <strlen((input)); i++){
-     while (input[i] != '\0')
-    {
       if (input[i] != ' ' && isalnum(input[i]) != 0)
 	{
 		str[a] = tolower(input[i]);
@@ -30,8 +28,6 @@
 	a--;
 	i++; a++;
     }
-
-  }
     int length2 = strlen(str);
     int j = 0;
     //Reversing the string
@@ -40,6 +36,7 @@
       j++;
     }
 	reverse[length2] = '\0';
+	str[length2] = '\0';
     //Checking to see if it's a Palindrome
          if(strcmp(reverse, str) == 0){
         
